@@ -1,10 +1,16 @@
 import sys
 
-if __name__ == "__main__":
-    rows = int(sys.stdin.readline())
-
+def readFile():
     matrix = []
-    for i in range(rows):
-        row = list(map(int,sys.stdin.readline().split()))
-        matrix.append(row)
+    txt = open("./test_files/DanceFloor01.txt", "r")
+    
+    for x in txt:
+        matrix.append(list(map(int,x.split())))
+
+    matrix.pop(0)
+    return matrix
+    
+    
+if __name__ == "__main__":
+    matrix = readFile()
     print(matrix)
