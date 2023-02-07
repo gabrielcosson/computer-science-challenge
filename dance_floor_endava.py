@@ -25,8 +25,19 @@ def isRightAvailable(matrix, x, y):
             return True
 
     return False
+
+
+def find_longest_possibility(all_possibilities):
+    length = 0
+    max_path = 0
+    for i in range(len(all_possibilities)):
+        if len(all_possibilities[i])>length:
+            max_path = i
+            length = len(all_possibilities[i])
+
+    return all_possibilities[max_path]
     
-    
+
 def dance_floor(matrix, x, y):
     options = [[]]
     finding_options_algorithm(matrix, x, y, 0, options)
@@ -66,4 +77,13 @@ def finding_options_algorithm(matrix, x, y, option_value, options):
 
 if __name__ == "__main__":
     matrix = readFile()
-    print(dance_floor(matrix, 1,1))
+    all_possibilities = []
+
+    for x in range(len(matrix)):
+        for y in range(len(matrix)):
+            options= dance_floor(matrix, x,y)
+            for i in options:
+                all_possibilities.append(i)
+    
+    print("Longest Endavans Line Dance is: ",*find_longest_possibility(all_possibilities))
+    print("Length of Path is: ",len(find_longest_possibility(all_possibilities)))
