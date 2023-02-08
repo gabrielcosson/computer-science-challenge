@@ -2,9 +2,9 @@ import sys
 
 indexes = []
 
-def readFile():
+def readFile(filenName):
     matrix = []
-    txt = open("./test_files/DanceFloor01.txt", "r")
+    txt = open("./test_files/"+filenName, "r")
     
     for x in txt:
         matrix.append(list(map(int,x.split())))
@@ -34,11 +34,6 @@ def removing_used_items(removing_type, x, y):
         if [x+1, y] in indexes:
             indexes.remove([x+1,y])
     elif(removing_type=="down"):
-        if [x, y+1] in indexes:
-            indexes.remove([x,y+1])
-    else:
-        if [x+1, y] in indexes:
-            indexes.remove([x+1,y])
         if [x, y+1] in indexes:
             indexes.remove([x,y+1])
 
@@ -75,7 +70,8 @@ def finding_options_algorithm(matrix, x, y, option_value, options):
             options[option1].append(i)
             options[option2].append(i)
 
-        removing_used_items("both", x, y)
+        removing_used_items("down", x, y)
+        removing_used_items("right", x, y)
 
         finding_options_algorithm(matrix, x+1, y, option1, options)
         finding_options_algorithm(matrix, x, y+1, option2, options)
@@ -90,13 +86,11 @@ def finding_options_algorithm(matrix, x, y, option_value, options):
         removing_used_items("right", x, y)
         finding_options_algorithm(matrix, x+1, y, option_value, options)
         return
-    
-    return
             
         
 
 if __name__ == "__main__":
-    matrix = readFile()
+    matrix = readFile("DanceFloor04.txt")
     all_possibilities = []
 
     for y in range(len(matrix)):
