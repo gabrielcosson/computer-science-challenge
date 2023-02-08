@@ -1,5 +1,3 @@
-import sys
-
 indexes = []
 
 def readFile(filenName):
@@ -90,7 +88,7 @@ def finding_options_algorithm(matrix, x, y, option_value, options):
         
 
 if __name__ == "__main__":
-    matrix = readFile("DanceFloor04.txt")
+    matrix = readFile("DanceFloor06.txt")
     all_possibilities = []
 
     for y in range(len(matrix)):

@@ -1,6 +1,3 @@
-import sys
-
-
 def readFile(fileName):
     matrix = []
     txt = open("./test_files/"+fileName, "r")
@@ -41,7 +38,43 @@ def determining_connections(size, matrix):
     return available_routes
 
 
+def finding_longest_path(available_routes):
+    options = [[] for _ in range(len(available_routes))]
+
+    for x in range(len(available_routes) -1, -1, -1):
+        #there are 2 possible paths
+        if len(available_routes[x]) == 2:
+            options[x].append(x)
+            if len(options[available_routes[x][0]]) > len(options[available_routes[x][1]]):
+                options[x].extend(options[available_routes[x][0]])
+            else:
+                options[x].extend(options[available_routes[x][1]])
+
+        #there is just 1 path
+        elif(len(available_routes[x]) == 1):
+            options[x].append(x)
+            options[x].extend(options[available_routes[x][0]])
+        
+        #there is no path
+        else:
+            options[x].append(x)
+
+    return options
+
+
+def printing_longest_line(matrix, options):
+    longest_line = []
+    longest_indexes = max(options, key=len)
+    print(longest_indexes)
+    
+    for i in longest_indexes:
+        longest_line.append(matrix[i])
+    
+    print("Longest Endavans Line Dance is: ", *longest_line)
+    print("Length of Path is: ", len(longest_line))
+
+
 if __name__ == "__main__":
-    size, matrix = readFile("DanceFloor05.txt")
-    options = determining_connections(size, matrix)
-    print(options)
+    size, matrix = readFile("DanceFloor06.txt")
+    options = finding_longest_path(determining_connections(size, matrix))
+    printing_longest_line(matrix, options)
