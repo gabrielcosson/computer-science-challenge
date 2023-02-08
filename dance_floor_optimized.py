@@ -27,8 +27,7 @@ def determining_connections(size, matrix):
 
     return available_routes
 
-
-
 if __name__ == "__main__":
-    size, matrix = readFile("DanceFloor01.txt")
-    print(determining_connections(size, matrix))
+    size, matrix = readFile("DanceFloor05.txt")
+    options = determining_connections(size, matrix)
+    print(options)
