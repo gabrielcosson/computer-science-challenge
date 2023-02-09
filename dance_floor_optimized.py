@@ -10,44 +10,39 @@ def readFile(fileName):
 
 
 def longest_path(size, matrix):
-    options = [[] for _ in range(len(matrix))]
+    paths = [[] for _ in range(len(matrix))]
     column = size
 
-    for x in range(len(options) -1, -1, -1):
-        options[x].append(x)
+    for x in range(len(paths)-1, -1, -1):
+        paths[x].append(matrix[x])
         right_extension = []
         down_extension = []
 
         #Right Path Available
         if column!=size and (x+1) < len(matrix) and abs(matrix[x] - matrix[x+1]) == 1:
-            right_extension = options[x+1]
+            right_extension = paths[x+1]
 
         #Down Path Available
         if (x+size) < len(matrix) and abs(matrix[x] - matrix[x+size]) == 1:
-            down_extension = options[x+size]
+            down_extension = paths[x+size]
 
         #Extending the Longest Path
         if len(right_extension) > len(down_extension):
-            options[x].extend(right_extension)
+            paths[x].extend(right_extension)
         else:
-            options[x].extend(down_extension)
+            paths[x].extend(down_extension)
 
         column = column - 1
 
         if column == 0:
             column = size
 
-        
-    return max(options, key=len)    
+    return max(paths, key=len)    
 
 
 if __name__ == "__main__":
-    longest_dancing_line = []
     size, matrix = readFile("DanceFloor07.txt")
-    indexes = longest_path(size, matrix)
-
-    for i in indexes:
-        longest_dancing_line.append(matrix[i])
+    longest_dancing_line = longest_path(size, matrix)
     
     print("Longest Endavans Line Dance is: ", *longest_dancing_line)
     print("Length of Path is: ", len(longest_dancing_line))
