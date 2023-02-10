@@ -88,13 +88,13 @@ def finding_options_algorithm(matrix, x, y, option_value, options):
         
 
 if __name__ == "__main__":
-    matrix = readFile("DanceFloor07.txt")
+    matrix = readFile("DanceFloor08.txt")
     all_possibilities = []
 
     for y in range(len(matrix)):
         for x in range(len(matrix)):
             indexes.append([x,y])
-                
+    
     for value in indexes:     
         options= dance_floor(matrix, value[0], value[1])
         for i in options:

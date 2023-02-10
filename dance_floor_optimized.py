@@ -10,11 +10,10 @@ def readFile(fileName):
 
 
 def longest_path(size, matrix):
-    paths = [[] for _ in range(len(matrix))]
+    paths = [[x] for x in matrix]
     column = size
 
     for x in range(len(paths)-1, -1, -1):
-        paths[x].append(matrix[x])
         right_extension = []
         down_extension = []
 
@@ -41,7 +40,7 @@ def longest_path(size, matrix):
 
 
 if __name__ == "__main__":
-    size, matrix = readFile("DanceFloor07.txt")
+    size, matrix = readFile("DanceFloor01.txt")
     longest_dancing_line = longest_path(size, matrix)
     
     print("Longest Endavans Line Dance is: ", *longest_dancing_line)
