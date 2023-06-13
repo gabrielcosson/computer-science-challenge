@@ -1,5 +1,5 @@
 # Computer Science Challenge
-Longest Dance Line
+## Longest Dance Line
 
 Our company has always been known for throwing epic parties for their employees, and the next one will not be the exception. For the next event we have prepared a game to make everyone have a good time and win prizes while also dancing and having fun. In this occasion, the dance floor will look like a square matrix and HR has designed a very interesting game called Longest Dance Line. Knowing the age of the person is very important for this game, so HR has designed a series of banners with this information for every guest, which must be held at all times. As shown in Figure 1.
 
